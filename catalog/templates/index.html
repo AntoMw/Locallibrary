@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>ReadCo Home</title>{% endblock %}
+
+{% block content %}
+    <h1>ReadCo Library Home</h1>
+    <p>Welcome to ReadCo Local Library, a website developed by <em>Anthony Mwendwa Kioko</em>!</p>
+    <h2>Library Statistics</h2>
+    <p>Current  Library Stats are as follows:</p>
+    <ul>
+        <li><strong>Books:</strong> {{ num_books }}</li>
+        <li><strong>Authors:</strong> {{ num_authors }}</li>
+        <li><strong>Copies:</strong> {{ num_instances }}</li>
+        <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+        <li><strong>Copies loaned:</strong> {{ num_instances_loaned }}</li>
+        <li><strong>Copies reserved:</strong> {{ num_instances_reserved }}</li>
+      </ul>
+    <p>Interesting Book Stats:</p>
+    <ul>
+        <li><strong>Books Hits for "Humans" in the title:</strong> {{ num_books_humans }}</li>
+        <li><strong>Books Hits for Politics:</strong> {{ num_books_genre_politics }}</li>
+      </ul>
+
+{% endblock %}
