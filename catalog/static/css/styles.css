@@ -1,26 +1,29 @@
 body {
     margin:1em;
 }
-.title-fixed{
+li.title{
     font-size: 5em;
+    padding-left:1em;
+}
+
+ul.nav{
     display: inline;
 }
 
-
-header{
-    padding:1em;
-    display: block;
+.header{
     background-color: white;
-    border-bottom: solid darkgray 5px;
+    border-bottom: solid darkgray 3px;
+
+}
+.logo{
+    width:100px;
+    height:100px;
+    border-radius: 50px;
 }
 
 .sidebar-nav {
-    margin-top: 30px;
-    list-style: none;
-}
-
-.logo{
-    width: 100px;
-    height:100px;
-    border-radius: 50px;
+    margin-top:30px;
+    list-style:none;
+    font-size:1.2em;
+    margin-left:0px
 }

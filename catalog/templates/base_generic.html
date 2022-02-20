@@ -10,17 +10,18 @@
   {% load static %}
   <link rel="stylesheet" href="{% static '/css/styles.css' %}">
 </head>
-<body>
+<body style="height:1500px">
 
+<nav class="navbar-fixed-top">
+  <div class="container-fluid header">
+    <ul class="nav navbar-nav">
+        <li>{% load static %}<img src="{% static '/images/logo.png' %}" alt="logo" class="logo"></li>
+        <li class="title">ReadCo Library</li>
+    </ul>
+  </div>
+</nav>
 
-<div class="navbar-fixed-top title-fixed">
-    <header >
-        {% load static %}<a href="{% url 'index' %}"><img src="{% static '/images/logo.png' %}" alt="logo" class="logo"></a>
-        <h1 class="title">ReadCo Library</h1>
-    </header>
-</div>
-
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top:90px;">
     <div class="row">
         <div class="col-md-2">
         {% block sidebar %}
@@ -32,8 +33,24 @@
             </ul>
         {% endblock %}
         </div>
+
+        <!--this is where your other templates content will go in-->
         <div class="col-md-10 ">{% block content %}{% endblock %}</div>
     </div>
+
+    <!--Spacers for nothing-->
+    <p></p>
+
+    <footer class="navbar-default">
+          <div class="container-fluid">
+              <div class="navbar-header"><a class="navbar-brand" href="{% url 'index' %}"><strong>ReadCo Local Library</strong></a></div>
+              <ul class="nav navbar-nav">
+                  <li><a href="mailto:anthonnymw89@gmail.com">Antonny Mwendwa &copy 2022</a></li>
+                  <li><a href="#">Terms and Conditions</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+              </ul>
+          </div>
+    </footer>
 </div>
 </body>
 </html>
