@@ -30,6 +30,12 @@ class Book(models.Model):
     # Genre class has already been defined so we can specify the object above.
     genre = models.ManyToManyField(Genre, help_text='Select a genre for this book')
 
+    def display_genre(self):
+        """Create a string for the Genre. This is required to display genre in Admin."""
+        return ', '.join(genre.name for genre in self.genre.all()[:3])
+
+    display_genre.short_description = 'Genre'
+
     def __str__(self):
         """String for representing the Model object."""
         return self.title
@@ -69,35 +75,14 @@ class BookInstance(models.Model):
         return f'{self.id} ({self.book.title})'
 
 
-class languageModel(models.Model):
+class Language(models.Model):
     """Model for book languages- Hardcoded language options"""
-    LANGUAGE = (
-        ('EN', 'English'),
-        ('PO', 'Polish'),
-        ('SW', 'Swahili'),
-        ('AA', 'Afrikaans'),
-        ('EL', 'Greek'),
-        ('AR', 'Arabic'),
-        ('ES', 'Spanish'),
-        ('IT', 'Italian'),
-        ('KI', 'Gikuyu'),
-        ('KO', 'Korean'),
-        ('ML', 'Malayalam'),
-        ('MN', 'Mongolian'),
-        ('RU', 'Russian'),
-    )
-
-    language = models.CharField(
-        max_length=2,
-        choices=LANGUAGE,
-        blank=False,
-        default='EN',
-        help_text='Books Language',
-    )
+    name = models.CharField(max_length=200,
+                            help_text="Enter the book's natural language (e.g. English, French, Japanese etc.)")
 
     def __str__(self):
-        """String for representing the Model object."""
-        return self.language
+        """String for representing the Model object (in Admin site etc.)"""
+        return self.name
 
 
 class Author(models.Model):
