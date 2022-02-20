@@ -1,7 +1,8 @@
 from django.shortcuts import render
 
-
 from .models import Book, Author, BookInstance, Genre, Language
+
+
 # Create your views here.
 
 def index(request):
@@ -21,12 +22,11 @@ def index(request):
     # The 'all()' is implied by default.
     num_authors = Author.objects.count()
 
-    #books with term hits
+    # books with term hits
     num_books_humans = Book.objects.filter(title__contains='Humans').count()
 
-    #politics genre
+    # politics genre
     num_books_genre_politics = Book.objects.filter(genre__exact='1').count()
-
 
     context = {
         'num_books': num_books,
