@@ -10,7 +10,7 @@
   {% load static %}
   <link rel="stylesheet" href="{% static '/css/styles.css' %}">
 </head>
-<body style="height:1500px">
+<body>
 
 <nav class="navbar-fixed-top">
   <div class="container-fluid header">
@@ -21,21 +21,43 @@
   </div>
 </nav>
 
-<div class="container-fluid" style="margin-top:90px;">
+<div class="container-fluid" style="margin-top:100px;">
     <div class="row">
         <div class="col-md-2">
         {% block sidebar %}
             <ul class="sidebar-nav">
-              <li><a href="{% url 'index' %}">Home</a></li>
-              <li><a href="">All books</a></li>
-              <li><a href="">All authors</a></li>
-              <li><a href="">All Genres</a></li>
+              <li><a href="{% url 'index' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">Home</a></li>
+              <li><a href="{% url 'books' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All books</a></li>
+              <li><a href="{% url 'authors' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All authors</a></li>
+              <li><a href="" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All Genres</a></li>
             </ul>
         {% endblock %}
         </div>
 
         <!--this is where your other templates content will go in-->
-        <div class="col-md-10 ">{% block content %}{% endblock %}</div>
+        <div class="col-md-10 ">
+            {% block content %}{% endblock %}
+
+        <!-- pagination -->
+            {% block pagination %}
+                {% if is_paginated %}
+                    <div class="pagination">
+                        <span class="page-links">
+                            {% if page_obj.has_previous %}
+                                <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                            {% endif %}
+                            <span class="page-current">
+                                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                            </span>
+                            {% if page_obj.has_next %}
+                                <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                {% endif %}
+              {% endblock %}
+
+        </div>
     </div>
 
     <!--Spacers for nothing-->

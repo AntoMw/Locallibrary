@@ -1,0 +1,21 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h2>Name: {{author.last_name}} {{author.first_name}}</h2>
+
+  <p><strong>Date of Birth:</strong> {{ author.date_of_birth }}</p>
+  {% if author.date_of_death == null %}
+      <p><strong>{{author.last_name}}</strong> is very much alive and probably writing</p>
+  {% else %}
+      <p><strong>{{author.last_name}}</strong> was pronounced dead on: {{author.date_of_death}}</p>
+  {% endif %}
+
+  <div style="margin-top:20px">
+    <h4>Copies</h4>
+      <p class="text-muted"><strong>Dev still working on this. </strong> </p>
+
+    <!-- check the for loop in book detail for inspiration, also check out the
+    code to list the count of books ith a certain phrase in the fields i.e author
+     last name-->
+  </div>
+{% endblock %}
