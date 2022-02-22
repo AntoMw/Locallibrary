@@ -26,11 +26,17 @@
         <div class="col-md-2">
         {% block sidebar %}
             <ul class="sidebar-nav">
-              <li><a href="{% url 'index' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">Home</a></li>
-              <li><a href="{% url 'books' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All books</a></li>
-              <li><a href="{% url 'authors' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All authors</a></li>
-              <li><a href="" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All Genres</a></li>
+                <li><a href="{% url 'index' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">Home</a></li>
+                <li><a href="{% url 'books' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All books</a></li>
+                <li><a href="{% url 'authors' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All authors</a></li>
+                <li><a href="" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All Genres</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout'%}?next={{request.path}}" class="btn btn-danger navbar-btn" style="width:80%;color:white;" role="button">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login'%}?next={{request.path}}" class="btn btn-info navbar-btn" style="width:80%;color:white;" role="button">Login</a></li>
+                {% endif %}
             </ul>
+
         {% endblock %}
         </div>
 
