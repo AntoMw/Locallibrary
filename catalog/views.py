@@ -30,6 +30,10 @@ def index(request):
     # politics genre
     num_books_genre_politics = Book.objects.filter(genre__exact='1').count()
 
+    # Number of visits to this view, as counted in the session variable.
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+
     context = {
         'num_books': num_books,
         'num_instances': num_instances,
@@ -39,6 +43,7 @@ def index(request):
         'num_instances_loaned': num_instances_loaned,
         'num_instances_reserved': num_instances_reserved,
         'num_authors': num_authors,
+        'num_visits': num_visits,
     }
 
     # Render the HTML template index.html with the data in the context variable

@@ -18,6 +18,8 @@
     <ul>
         <li><strong>Books Hits for "Humans" in the title:</strong> {{ num_books_humans }}</li>
         <li><strong>Books Hits for Politics:</strong> {{ num_books_genre_politics }}</li>
-      </ul>
+    </ul>
+
+    <p style="num-visits">You have visited this page <strong>{{ num_visits }}</strong> time{{ num_visits|pluralize }}.</p>
 
 {% endblock %}
