@@ -27,3 +27,11 @@ ul.nav{
     font-size: 1.2em;
     margin-left: 0px;
 }
+
+.input-spacing{
+    margin:10px;
+}
+
+p.lost-password-btn{
+    margin-top:30px;
+}
