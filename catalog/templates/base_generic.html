@@ -38,6 +38,15 @@
                 {% endif %}
             </ul>
 
+            <ul class="sidebar-nav">
+            <h4>Staff:</h4>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'all-borrowed' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad" role="button">Loaned</a></li>
+                {% else %}
+                    <li><p>Sign in first</p></li>
+                {% endif %}
+            </ul>
+
         {% endblock %}
         </div>
 
