@@ -15,22 +15,23 @@
     {% endif %}
   {% endif %}
 
-  <form method="post" action="{% url 'login' %}">
+  <form method="post" action="{% url 'login' %}" class="form-horizontal">
     {% csrf_token %}
-    <div class="form-label-group">
-        <label for="inputuser">Username: </label>
-        <input type="username" id="inputuser" name="username" class="form-control" placeholder="Username" required autofocus>
+    <div class="form-group form-group-lg" style="margin-top:20px;">
+        <!--<label for="inputuser" class="col-sm-2">Username: </label>-->
+        <div class="col-sm-4">
+            <input type="username" id="inputuser" name="username" class="form-control" placeholder="Username" required autofocus>
+        </div>
 
+        <!--<label for="inputPassword" class="col-sm-2">Password:</label>-->
+        <div class="col-sm-4">
+            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        </div>
+        <div class="col-sm-12">
+            <input type="submit" value="login" class="btn btn-info navbar-btn" style="width:10%;margin-top:30px;"/>
+            <input type="hidden" name="next" value="{{ next }}" />
+        </div>
     </div>
-
-      <div class="form-label-group">
-          <label for="inputPassword">Password:</label>
-          <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-
-      </div>
-</div>
-    <input type="submit" value="login" class="btn btn-info navbar-btn" style="width:10%;margin-top:30px;"/>
-    <input type="hidden" name="next" value="{{ next }}" />
   </form>
 
   {# Assumes you setup the password_reset view in your URLconf #}
