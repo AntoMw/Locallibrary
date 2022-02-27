@@ -2,15 +2,26 @@
 
 {% block content %}
   <h1>Authors with Books at ReadCo</h1>
-  {% if author_list %}
-  <ul>
-    {% for author in author_list %}
-      <li>
-        <a href="{{ author.get_absolute_url }}">{{ author.last_name }}</a> {{author.first_name}} {{author.last_name}}
-      </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-    <p>There are no authors registered in the Library yet!.</p>
-  {% endif %}
+      {% if author_list %}
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                  <th>Last Name</th>
+                  <th>Full Name</th>
+                  <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for author in author_list %}
+                <tr>
+                    <td><strong>{{author.last_name}}</strong></td>
+                    <td>{{author.first_name}} {{author.last_name}}</td>
+                    <td><a href="{{ author.get_absolute_url }}">More Details</a></td>
+              </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+      {% else %}
+        <p>There are no authors registered in the Library yet!.</p>
+      {% endif %}
 {% endblock %}
