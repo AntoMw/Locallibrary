@@ -10,6 +10,7 @@
               <th>Book </th>
               <th>Due Back Date</th>
               <th>Borrower</th>
+              <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -18,6 +19,9 @@
             <td><a href="{% url 'book-detail' bookinst.book.pk %}">{{bookinst.book.title}}</a></td>
             <td class="{% if bookinst.is_overdue %}text-danger{% endif %}">{{ bookinst.due_back }}</td>
             <td><strong>{{bookinst.borrower}}</strong></td>
+            <td>
+                    <a class="btn btn-success navbar-btn" style="color:white;" href="{% url 'renew-book-librarian' bookinst.id %}">Renew</a>
+            </td>
           </tr>
         {%endfor%}
         </tbody>

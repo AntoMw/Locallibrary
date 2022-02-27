@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+  <h1>Renew: {{ book_instance.book.title }}</h1>
+    <p><strong>Borrower: </strong> {{ book_instance.borrower }}</p>
+    <p{% if book_instance.is_overdue %} class="text-danger"{% endif %}><strong>Due date:</strong> {{ book_instance.due_back }}</p>
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group form-group-lg" style="margin-top:40px;">
+        {{ form|crispy }}
+    </div>
+
+    <input class="btn btn-success navbar-btn" style="width:100px; color:white;" type="submit" value="Submit">
+  </form>
+{% endblock %}

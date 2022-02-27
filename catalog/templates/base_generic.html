@@ -17,6 +17,7 @@
     <ul class="nav navbar-nav">
         <li>{% load static %}<img src="{% static '/images/logo.png' %}" alt="logo" class="logo"></li>
         <li class="title">ReadCo Library</li>
+        <!--- implement a search bar-->
     </ul>
   </div>
 </nav>
@@ -26,15 +27,15 @@
         <div class="col-md-2">
         {% block sidebar %}
             <ul class="sidebar-nav">
-                <li><a href="{% url 'index' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">Home</a></li>
-                <li><a href="{% url 'books' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All books</a></li>
-                <li><a href="{% url 'authors' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All authors</a></li>
-                <li><a href="{% url 'genres' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All Genres</a></li>
+                <li><a href="{% url 'index' %}" class="btn btn-default navbar-btn" style="width:100px;color:#1c78ad;" role="button">Home</a></li>
+                <li><a href="{% url 'books' %}" class="btn btn-default navbar-btn" style="width:100px;color:#1c78ad;" role="button">All books</a></li>
+                <li><a href="{% url 'authors' %}" class="btn btn-default navbar-btn" style="width:100px;color:#1c78ad;" role="button">All authors</a></li>
+                <li><a href="{% url 'genres' %}" class="btn btn-default navbar-btn" style="width:100px;color:#1c78ad;" role="button">All Genres</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'my-borrowed' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad" role="button">Borrowed</a></li>
-                    <li><a href="{% url 'logout'%}?next={{request.path}}" class="btn btn-danger navbar-btn" style="width:80%;color:white;" role="button">Logout</a></li>
+                    <li><a href="{% url 'my-borrowed' %}" class="btn btn-default navbar-btn" style="width:100px;color:#1c78ad" role="button">Borrowed</a></li>
+                    <li><a href="{% url 'logout'%}?next={{request.path}}" class="btn btn-danger navbar-btn" style="width:100px;color:white;" role="button">Logout</a></li>
                 {% else %}
-                    <li><a href="{% url 'login'%}?next={{request.path}}" class="btn btn-info navbar-btn" style="width:80%;color:white;" role="button">Login</a></li>
+                    <li><a href="{% url 'login'%}?next={{request.path}}" class="btn btn-info navbar-btn" style="width:100px;color:white;" role="button">Login</a></li>
                 {% endif %}
             </ul>
 
@@ -44,7 +45,7 @@
                     <!--add if for permissions, you can also use the if user.is_staff-->
                     {% if perms.catalog.change_bookinstance %}
                         <!-- Show the button to view all loaned books -->
-                        <li><a href="{% url 'all-borrowed' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad" role="button">Loaned</a></li>
+                        <li><a href="{% url 'all-borrowed' %}" class="btn btn-default navbar-btn" style="width:100px;color:#1c78ad" role="button">Loaned</a></li>
                     {% else %}
                         <li><p>Unauthorised</p></li>
                     {% endif %}
