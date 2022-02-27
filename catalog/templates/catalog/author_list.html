@@ -24,7 +24,7 @@
                             <td><strong>{{author.last_name}}</strong></td>
                             <td>{{author.first_name}} {{author.last_name}}</td>
                             <td><a href="{{ author.get_absolute_url }}">More Details</a></td>
-                            <td><a class="btn btn-info navbar-btn" style="color:white;" href="{% url 'author-update' author.id %}">Edit</a></td>
+                            <td><a class="btn btn-info " style="color:white;" href="{% url 'author-update' author.id %}">Edit</a></td>
                       </tr>
                     {%endfor%}
                     </tbody>
