@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Book, Author, BookInstance, Genre, Language
-from django.views import generic #for bookslist view
+from django.views import generic  # for bookslist view
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -52,7 +52,7 @@ def index(request):
 
 class BookListView(generic.ListView):
     model = Book
-    paginate_by = 5
+    paginate_by = 10
 
 
 class BookDetailView(generic.DetailView):
@@ -61,28 +61,40 @@ class BookDetailView(generic.DetailView):
 
 class AuthorListView(generic.ListView):
     model = Author
-    paginate_by = 5
+    paginate_by = 10
 
 
 class AuthorDetailView(generic.DetailView):
     model = Author
 
 
-class LoanedBooksByUserListView(LoginRequiredMixin,generic.ListView):
+# custom view for genres
+class GenreListView(generic.ListView):
+    model = Genre
+    paginate_by = 10
+
+
+# custom detailedview for genres
+# Note yet implemented correctly
+class GenreDetailView(generic.DetailView):
+    model = Genre
+
+
+class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
     """Generic class-based view listing books on loan to current user."""
     model = BookInstance
-    template_name ='catalog/bookinstance_list_borrowed_user.html'
-    paginate_by = 5
+    template_name = 'catalog/bookinstance_list_borrowed_user.html'
+    paginate_by = 10
 
     def get_queryset(self):
         return BookInstance.objects.filter(borrower=self.request.user).filter(status__exact='o').order_by('due_back')
 
 
-class LoanedBooksListView(LoginRequiredMixin,generic.ListView):
+class LoanedBooksListView(LoginRequiredMixin, generic.ListView):
     """Generic class-based view listing books on loan to all users."""
     model = BookInstance
-    template_name ='catalog/bookinstance_list_borrowed.html'
-    paginate_by = 5
+    template_name = 'catalog/bookinstance_list_borrowed.html'
+    paginate_by = 10
 
     def get_queryset(self):
         return BookInstance.objects.filter(status__exact='o').order_by('due_back')
