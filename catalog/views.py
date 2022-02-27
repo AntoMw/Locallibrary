@@ -56,7 +56,7 @@ class BookListView(generic.ListView):
     paginate_by = 10
 
 
-class BookDetailView(generic.DetailView):
+class BookDetailView(LoginRequiredMixin, generic.DetailView):
     model = Book
 
 
@@ -65,7 +65,7 @@ class AuthorListView(generic.ListView):
     paginate_by = 10
 
 
-class AuthorDetailView(generic.DetailView):
+class AuthorDetailView(LoginRequiredMixin, generic.DetailView):
     model = Author
 
 
@@ -77,7 +77,7 @@ class GenreListView(generic.ListView):
 
 # custom detailedview for genres
 # Note yet implemented correctly
-class GenreDetailView(generic.DetailView):
+class GenreDetailView(LoginRequiredMixin, generic.DetailView):
     model = Genre
 
 
@@ -93,6 +93,7 @@ class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
 
 class LoanedBooksListView(PermissionRequiredMixin, generic.ListView):
     """Generic class-based view listing books on loan to all users."""
+    # check permissions by printing {{perms.applabel}} to the html page
     permission_required = 'catalog.change_bookinstance'
     model = BookInstance
     template_name = 'catalog/bookinstance_list_borrowed.html'
