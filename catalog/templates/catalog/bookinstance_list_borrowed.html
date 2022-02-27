@@ -2,7 +2,13 @@
 
 {% block content %}
     <h1>All borrowed books</h1>
-
+    <div>
+        <a class="btn btn-primary navbar-btn" style="color:white;" href="">Issue a Book</a>
+        <!-- Impelement the Loan a book functionality for the librarians using the [edit book instance approach.
+        Follow the approach for edit book and edit author.
+        -->
+        <a class="btn btn-primary navbar-btn" style="color:white;" href="">Confirm Book Reservation</a>
+    </div>
     {% if bookinstance_list %}
     <table class="table table-hover">
         <thead>

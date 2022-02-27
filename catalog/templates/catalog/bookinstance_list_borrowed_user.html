@@ -2,7 +2,14 @@
 
 {% block content %}
     <h1>My borrowed books</h1>
+    <div>
+        <a class="btn btn-primary navbar-btn" style="color:white;" href="">Reserve a Book</a>
+        <!-- Impelement the reserve a book functionality for the normal users using the [edit book instance approach.
+        Follow the approach for edit book and edit author. give access to edit book instances to normal users.
 
+        restrict available instances to reserved only.
+        -->
+    </div>
     {% if bookinstance_list %}
         <table class="table table-hover">
             <thead>

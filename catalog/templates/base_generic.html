@@ -46,6 +46,7 @@
                     {% if perms.catalog.change_bookinstance %}
                         <!-- Show the button to view all loaned books -->
                         <li><a href="{% url 'all-borrowed' %}" class="btn btn-default navbar-btn" style="width:100px;color:#1c78ad" role="button">Loaned</a></li>
+                        <li><a href="{% url 'all-borrowed' %}" class="btn btn-default navbar-btn" style="width:100px;color:#1c78ad" role="button">Issue</a></li>
                     {% else %}
                         <li><p>Unauthorised</p></li>
                     {% endif %}
