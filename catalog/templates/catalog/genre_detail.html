@@ -1,0 +1,32 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>{{ genre.name }}</h1>
+        <dl>
+            <dt>Summary:</dt>
+            <dd>{{ genre.summary }}</dd>
+        </dl>
+
+        <div style="margin-top:20px">
+            <h4>Copies</h4>
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                          <th>Book </th>
+                          <th>Author</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for copy in book_set.all %}
+                        {% if book.genre == genre.name %}
+                        <!--code to display books under a certain genre-->
+                            <tr>
+                                <td><a href="{{book.get_absolute_url}}">{{book.title}}</a></td>
+                                <td><strong>{{book.author}}</strong></td>
+                            </tr>
+                        {% endif %}
+                    {%endfor%}
+                    </tbody>
+                 </table>
+        </div>
+{% endblock %}
