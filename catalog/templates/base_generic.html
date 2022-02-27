@@ -42,7 +42,7 @@
             {% if user.is_authenticated %}
             <h4>Staff:</h4>
                     <!--add if for permissions, you can also use the if user.is_staff-->
-                    {% if perms.BookInstance.can_mark_returned %}
+                    {% if perms.catalog.change_bookinstance %}
                         <!-- Show the button to view all loaned books -->
                         <li><a href="{% url 'all-borrowed' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad" role="button">Loaned</a></li>
                     {% else %}
@@ -82,6 +82,8 @@
 
     <!--Spacers for nothing-->
     <p></p>
+
+
 
     <footer class="navbar-default">
           <div class="container-fluid">
