@@ -5,6 +5,9 @@
     {% if author_list %}
         {% if perms.catalog.change_author %}
                   <!-- Show the buttons to edit-->
+            <div>
+                <a class="btn btn-primary navbar-btn" style="color:white;" href="{% url 'author-create' %}">Register Author</a>
+            </div>
             <div style="margin-top:30px;">
                 <table class="table table-hover">
                     <thead>

@@ -150,8 +150,9 @@ def renew_book_librarian(request, pk):
     return render(request, 'catalog/book_renew_librarian.html', context)
 
 
+# views for edits author related stuff
 class AuthorCreate(PermissionRequiredMixin, CreateView):
-    permission_required = 'catalog.create_author'
+    permission_required = 'catalog.change_author'
     model = Author
     fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
     initial = {'date_of_death': '11/06/2020'}
@@ -167,5 +168,24 @@ class AuthorDelete(PermissionRequiredMixin, DeleteView):
     permission_required = 'catalog.delete_author'
     model = Author
     success_url = reverse_lazy('authors')
+
+
+# views for editing book related stuff
+class BrookCreate(PermissionRequiredMixin, CreateView):
+    permission_required = 'catalog.create_book'
+    model = Book
+    fields = ['title', 'author', 'summary', 'isbn', 'genre', 'language']
+
+
+class BookUpdate(PermissionRequiredMixin, UpdateView):
+    permission_required = 'catalog.change_book'
+    model = Book
+    fields = ['title', 'summary', 'genre', 'language'] # Not recommended (potential security issue if more fields added)
+
+
+class BookDelete(PermissionRequiredMixin, DeleteView):
+    permission_required = 'catalog.delete_book'
+    model = Book
+    success_url = reverse_lazy('books')
 
 
