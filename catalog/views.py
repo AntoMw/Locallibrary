@@ -171,8 +171,8 @@ class AuthorDelete(PermissionRequiredMixin, DeleteView):
 
 
 # views for editing book related stuff
-class BrookCreate(PermissionRequiredMixin, CreateView):
-    permission_required = 'catalog.create_book'
+class BookCreate(PermissionRequiredMixin, CreateView):
+    permission_required = 'catalog.change_book'
     model = Book
     fields = ['title', 'author', 'summary', 'isbn', 'genre', 'language']
 

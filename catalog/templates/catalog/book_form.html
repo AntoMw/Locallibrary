@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% load bootstrap4 %}
+{% block content %}
+  <form action="" method="post">
+    {% csrf_token %}
+      <div class="col-md-4" style="margin-top:0px;">
+        {% bootstrap_form form %}
+
+        <div style="margin-top:30px;">
+            <a class="btn btn-danger navbar-btn normal-btn-design" style="width:100px; color:white;margin-right:30px;" href="{% url 'books' %}">Cancel</a>
+            <input class="btn btn-success navbar-btn" style="width:100px; color:white;" type="submit" value="Submit">
+        </div>
+      </div>
+
+  </form>
+{% endblock %}
