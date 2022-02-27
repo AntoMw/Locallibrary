@@ -29,7 +29,7 @@
                 <li><a href="{% url 'index' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">Home</a></li>
                 <li><a href="{% url 'books' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All books</a></li>
                 <li><a href="{% url 'authors' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All authors</a></li>
-                <li><a href="" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All Genres</a></li>
+                <li><a href="{% url 'genres' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad;" role="button">All Genres</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'my-borrowed' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad" role="button">Borrowed</a></li>
                     <li><a href="{% url 'logout'%}?next={{request.path}}" class="btn btn-danger navbar-btn" style="width:80%;color:white;" role="button">Logout</a></li>
