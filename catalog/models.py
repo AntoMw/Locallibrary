@@ -10,10 +10,15 @@ from django.contrib.auth.models import User
 class Genre(models.Model):
     """Model representing a book genre."""
     name = models.CharField(max_length=200, help_text='Enter a book genre (e.g. Science Fiction)')
+    summary = models.TextField(max_length=1000, help_text='Enter a brief description of the genre', default="Genre about this World issues")
 
     def __str__(self):
         """String for representing the Model object."""
         return self.name
+
+    def get_absolute_url(self):
+        """Returns the url to access a detail record for this book."""
+        return reverse('genre-detail', args=[str(self.name)])
 
 
 class Book(models.Model):
@@ -86,7 +91,7 @@ class BookInstance(models.Model):
 
 
 class Language(models.Model):
-    """Model for book languages- Hardcoded language options"""
+    """Model for book languages- open language options"""
     name = models.CharField(max_length=200,
                             help_text="Enter the book's natural language (e.g. English, French, Japanese etc.)")
 
