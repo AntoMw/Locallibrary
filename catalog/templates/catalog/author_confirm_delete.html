@@ -8,7 +8,11 @@
 
 <form action="" method="POST">
   {% csrf_token %}
-  <input class="btn btn-danger navbar-btn" style="width:100px; color:white;" type="submit" value="Yes, delete.">
+  <div style="margin-top:30px;">
+     <a class="btn btn-success navbar-btn normal-btn-design" style="width:100px; color:white;margin-right:30px;" href="{% url 'author-detail' author.id %}">Cancel</a>
+     <input class="btn btn-danger navbar-btn" style="width:100px; color:white;" type="submit" value="Yes, delete.">
+  </div>
+
 </form>
 
 {% endblock %}

@@ -1,11 +1,16 @@
 {% extends "base_generic.html" %}
 
+{% load crispy_forms_tags %}
 {% block content %}
   <form action="" method="post">
     {% csrf_token %}
     <div class="form-group form-group-lg" style="margin-top:40px;">
         {{ form|crispy }}
     </div>
-    <input class="btn btn-success navbar-btn" style="width:100px; color:white;" type="submit" value="Save">
+    <div style="margin-top:30px;">
+        <a class="btn btn-danger navbar-btn normal-btn-design" style="width:100px; color:white;margin-right:30px;" href="{% url 'authors' %}">Cancel</a>
+        <input class="btn btn-success navbar-btn" style="width:100px; color:white;" type="submit" value="Submit">
+    </div>
+
   </form>
 {% endblock %}

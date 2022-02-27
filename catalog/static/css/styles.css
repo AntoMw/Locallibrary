@@ -55,3 +55,9 @@ p.lost-password-btn{
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+.normal-btn-design{
+    width:100px;
+    color:white;
+    margin-right:20px;
+}

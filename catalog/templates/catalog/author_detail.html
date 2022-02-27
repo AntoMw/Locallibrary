@@ -10,7 +10,10 @@
       <p><strong>{{author.last_name}}</strong> was pronounced dead on: {{author.date_of_death}}</p>
   {% endif %}
 
-     <a class="btn btn-danger navbar-btn" style="color:white;" href="{% url 'author-delete' author.id %}">Delete Author from Library</a>
+    <div style="margin-top:30px;">
+        <a class="btn btn-info navbar-btn" style="width:100px; color:white; margin-right:30px;" href="{% url 'author-update' author.id %}">Update</a>
+        <a class="btn btn-danger navbar-btn" style="color:white;" href="{% url 'author-delete' author.id %}">Delete Author from Library</a>
+    </div>
 
     <div style="margin-top:20px">
         <h4>Copies:</h4>
