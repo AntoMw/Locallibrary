@@ -2,28 +2,54 @@
 
 {% block content %}
   <h1>Authors with Books at ReadCo</h1>
-      {% if author_list %}
-        <table class="table table-hover">
-            <thead>
-              <tr>
-                  <th>Last Name</th>
-                  <th>Full Name</th>
-                  <th>Details</th>
-                  <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-            {% for author in author_list %}
-                <tr>
-                    <td><strong>{{author.last_name}}</strong></td>
-                    <td>{{author.first_name}} {{author.last_name}}</td>
-                    <td><a href="{{ author.get_absolute_url }}">More Details</a></td>
-                    <td><a class="btn btn-info navbar-btn" style="color:white;" href="{% url 'author-update' author.id %}">Edit</a></td>
-              </tr>
-            {%endfor%}
-            </tbody>
-        </table>
-      {% else %}
+    {% if author_list %}
+        {% if perms.catalog.change_author %}
+                  <!-- Show the buttons to edit-->
+            <div style="margin-top:30px;">
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                          <th>Last Name</th>
+                          <th>Full Name</th>
+                          <th>Details</th>
+                          <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for author in author_list %}
+                        <tr>
+                            <td><strong>{{author.last_name}}</strong></td>
+                            <td>{{author.first_name}} {{author.last_name}}</td>
+                            <td><a href="{{ author.get_absolute_url }}">More Details</a></td>
+                            <td><a class="btn btn-info navbar-btn" style="color:white;" href="{% url 'author-update' author.id %}">Edit</a></td>
+                      </tr>
+                    {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <!--- Render the page without the edit button-->
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                      <th>Last Name</th>
+                      <th>Full Name</th>
+                      <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for author in author_list %}
+                    <tr>
+                        <td><strong>{{author.last_name}}</strong></td>
+                        <td>{{author.first_name}} {{author.last_name}}</td>
+                        <td><a href="{{ author.get_absolute_url }}">More Details</a></td>
+                  </tr>
+                {%endfor%}
+                </tbody>
+            </table>
+        {% endif %}
+
+    {% else %}
         <p>There are no authors registered in the Library yet!.</p>
-      {% endif %}
+    {% endif %}
 {% endblock %}
