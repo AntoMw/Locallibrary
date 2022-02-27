@@ -39,11 +39,15 @@
             </ul>
 
             <ul class="sidebar-nav">
+            {% if user.is_authenticated %}
             <h4>Staff:</h4>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'all-borrowed' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad" role="button">Loaned</a></li>
-                {% else %}
-                    <li><p>Sign in first</p></li>
+                    <!--add if for permissions, you can also use the if user.is_staff-->
+                    {% if perms.BookInstance.can_mark_returned %}
+                        <!-- Show the button to view all loaned books -->
+                        <li><a href="{% url 'all-borrowed' %}" class="btn btn-default navbar-btn" style="width:80%;color:#1c78ad" role="button">Loaned</a></li>
+                    {% else %}
+                        <li><p>Unauthorised</p></li>
+                    {% endif %}
                 {% endif %}
             </ul>
 
@@ -83,7 +87,8 @@
           <div class="container-fluid">
               <div class="navbar-header"><a class="navbar-brand" href="{% url 'index' %}"><strong>ReadCo Local Library</strong></a></div>
               <ul class="nav navbar-nav">
-                  <li><a href="mailto:anthonnymw89@gmail.com">Antonny Mwendwa &copy 2022</a></li>
+                  <li><a href="https://opensource.org/licenses/MIT">MIT License &copy 2022</a></li>
+                  <li><a href="https://www.linkedin.com/in/antonny-mwendwa-924036157/">Antonny | LinkedIn &reg</a></li>
                   <li><a href="#">Terms and Conditions</a></li>
                   <li><a href="#">Privacy Policy</a></li>
               </ul>
