@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Genre List</h1>
+  {% if genre_list %}
+      <table class="table table-hover">
+        <thead>
+          <tr>
+              <th>Genre </th>
+              <th>Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for genre in genre_list %}
+            <tr>
+            <td>{{genre.name}}</td>
+            <td><a href="{{genre.get_absolute_url}}">More Details</a></td>
+
+          </tr>
+        {%endfor%}
+        </tbody>
+    </table>
+
+    {% else %}
+      <p>There are no books with registered genres in the Library.</p>
+    {% endif %}
+
+{% endblock %}
