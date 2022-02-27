@@ -83,7 +83,7 @@ class GenreDetailView(generic.DetailView):
 
 class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
     """Generic class-based view listing books on loan to current user. library user permissions required."""
-    permission_required = 'BookInstance.can_mark_returned'
+
     model = BookInstance
     template_name = 'catalog/bookinstance_list_borrowed_user.html'
     paginate_by = 10
@@ -94,7 +94,7 @@ class LoanedBooksByUserListView(LoginRequiredMixin, generic.ListView):
 
 class LoanedBooksListView(PermissionRequiredMixin, generic.ListView):
     """Generic class-based view listing books on loan to all users."""
-
+    permission_required = 'Catalog.can_change_book_instance'
     model = BookInstance
     template_name = 'catalog/bookinstance_list_borrowed.html'
     paginate_by = 10
