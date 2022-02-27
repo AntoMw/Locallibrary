@@ -1,4 +1,5 @@
 import datetime
+from django.urls import reverse_lazy
 from django.views import generic  # for bookslist view
 from django.shortcuts import render
 from .models import Book, Author, BookInstance, Genre, Language
@@ -13,6 +14,9 @@ from django.urls import reverse
 
 # form imports
 from catalog.forms import RenewBookForm
+
+# for updating views
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
 # Create your views here.
@@ -144,3 +148,24 @@ def renew_book_librarian(request, pk):
     }
 
     return render(request, 'catalog/book_renew_librarian.html', context)
+
+
+class AuthorCreate(PermissionRequiredMixin, CreateView):
+    permission_required = 'catalog.create_author'
+    model = Author
+    fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
+    initial = {'date_of_death': '11/06/2020'}
+
+
+class AuthorUpdate(PermissionRequiredMixin, UpdateView):
+    permission_required = 'catalog.change_author'
+    model = Author
+    fields = '__all__' # Not recommended (potential security issue if more fields added)
+
+
+class AuthorDelete(PermissionRequiredMixin, DeleteView):
+    permission_required = 'catalog.delete_author'
+    model = Author
+    success_url = reverse_lazy('authors')
+
+

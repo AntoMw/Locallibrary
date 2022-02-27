@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group form-group-lg" style="margin-top:40px;">
+        {{ form|crispy }}
+    </div>
+    <input class="btn btn-success navbar-btn" style="width:100px; color:white;" type="submit" value="Save">
+  </form>
+{% endblock %}
